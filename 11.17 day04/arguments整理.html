@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    function showargs() {
+        console.log(arguments);
+    }
+
+    showargs(1, 2, 3, 4, 5);
+
+    // 这里我们可以看到arguments对象将我传入的五个参数以数组的形式保存在里面，还有保存了我传入函数的实参的个数（length）。
+    // 而且我们可以看到arguments对象的 __ proto __ 是指向object的，这也说明了他是个类数组对象，而不是一个数组。
+    // 有了这个对象我们以后写函数的时候，就不用给所有的形参指定参数名，然后通过参数名的方式获取参数了，
+    // 我们可以直接使用arguments对象来获取实参，这样是不是方便了很多呢。
+    // 有些语言在我们给函数指定了参数名之后，当调用函数时，会判断当前传入的参数是否与函数定义的参数个数相等，不相等就会报错
+
+
+    function showcallee() {
+        var a = '这里是代码';
+        var b = '这是另一段代码';
+        var c = a + b;
+
+        console.log(arguments.callee);
+
+        return c;
+    }
+    showcallee();
+
+
+    // 可以看到arguments还有一个叫做callee的属性，这个属性是表示的是当前函数的一个引用
+    // 简单点说，这个属性里面存储的我们调用的这个函数的完整代码
+
+    function add() {
+        var len = arguments.length,
+            sum = 0;
+        for (; len--;) {
+            sum += arguments[len];
+        }
+        return sum;
+    }
+
+    console.log(add(1, 2, 3));   //6
+    console.log(add(1, 3));     //4
+    console.log(add(1, 2, 3, 5, 6, 2, 7));   //26
+    // 下面我们利用arguments对象来实现一个参数相加的函数，不论传入多少参数都行，将传入的参数相加后返回。
+</script>

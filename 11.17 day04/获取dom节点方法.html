@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <div class="ad2" id="ad" name='ad1'></div>
+</body>
+</html>
+<script>
+    //  1.通过id获取
+    let arr=document.getElementById('ad')
+    console.log(arr);
+
+
+    // 2.通过标签名获取
+    let arr1=document.getElementsByTagName('div')
+    console.log(arr1);
+ 
+
+
+
+    // 3.通过name属性获取
+    let arr2=document.getElementsByName('ad1')
+    console.log(arr2);
+
+
+
+    // 4.通过类名获取
+    let arr3=document.getElementsByClassName('ad2')
+    console.log(arr3);
+
+
+
+
+    // 5.通过选择器获取一个元素
+    let arr4=document.querySelector('.ad2')
+    console.log(arr4);
+
+
+   //  6.通过选择器获取一组元素
+     let arr5=document.querySelectorAll('.ad2')
+     console.log(arr5);
+
+
+
+    //  7.通过body获取
+      let arr6=document.body
+      console.log(arr6);
+</script>

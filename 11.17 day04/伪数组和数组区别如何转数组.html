@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // fakeArray就是一个伪数组
+    // var fakeArray = {
+    //     length: 3,
+    //     "0": "first",
+    //     "1": "second",
+    //     "2": "third"
+    // }
+    // console.log(fakeArray);   //伪数组原型指向的是object
+    // var arr = [1, 2, 3, 4]
+
+    // // 真数组的方法来自Array.prototype
+    // console.log(fakeArray instanceof Array) //false
+    // console.log(arr instanceof Array) // true
+
+    // Array.isArray(fakeArray) // false;
+    // Array.isArray(arr) // true;
+
+    // console.log(arr.__proto__ === Array.prototype) // true
+    // console.log(fakeArray.__proto__ === Array.prototype) // false
+    // console.log(fakeArray.__proto__ === Object.prototype) // true
+
+    // arr.forEach(x => console.log(x)) // 1 2 3 4
+    // fakeArray.forEach(x => console.log(x)) // fakeArray.forEach is not a function
+
+    // Object.keys(fakeArray) //  ["0", "1", "2", "length"]
+
+
+
+    //   伪数组转换为真数组
+    // 1.使用Array.prototype.slice.call();
+    // var fakeArray = {
+    //     length: 3,
+    //     "0": "first",
+    //     "1": "second",
+    //     "2": "third"
+    // }
+    // // 将伪数组转换为真数组
+    // var arr = Array.prototype.slice.call(fakeArray)
+
+    // console.log(arr) // ["first", "second", "third"]
+    // Array.isArray(arr) // true
+    // console.log(arr instanceof Array) // true
+    // arr.forEach(x => console.log(x)) // first second third
+
+
+
+    // 2.使用ES6中的Array.from方法
+
+    var fakeArray = {
+        length: 3,
+        "0": "first",
+        "1": "second",
+        "2": "third"
+    }
+    var arr = Array.from(fakeArray)
+    console.log(arr) // ["first", "second", "third"]
+
+
+</script>
