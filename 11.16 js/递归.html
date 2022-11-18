@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // function deepClone(obj) {
+    //     let res = {}
+    //     for (const key in obj) {
+    //         if (obj[key] instanceof Object) {
+    //             res[key] = deepClone(obj[key])
+    //             // 自身调用自身
+    //         } else {
+    //             res[key] = obj[key]
+    //         }
+    //     }
+    //     return res
+    // }
+
+
+
+    function deepClooe(obj) {
+        if (obj == null) return obj;
+        if (obj instanceof Date) return Date()
+        if (obj instanceof RegExp) return new RegExp()
+        if (typeof obj !== "object") return obj
+        let res = new obj.constructor()
+        for (key in obj) {
+            res[key] = deepClooe(obj[key])
+
+        }
+        console.log(res);
+        return res
+    }
+    let obj2 = deepClooe(obj)
+    obj2.name = '白骨精'
+    obj2.sing.name = '有一个妖精'
+    console.log(obj, obj2);
+</script>

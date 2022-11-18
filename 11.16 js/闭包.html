@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 闭包
+    // 1.函数嵌套函数
+    // 2.有返回值
+    // 3.返回值是一个回调函数
+
+    function person() {
+        let name = 'Peter';
+        return function person1() {
+            console.log(name);
+        }
+    }
+    let peter = person()
+    peter()
+
+
+
+
+    let a = 'hello'
+    console.log('a');
+    function first() {
+        console.log('123');
+    }
+    first()
+    console.log('456');
+
+
+    // 使用闭包的优点:可以避免全局变量污染 延长变量生命周期
+    // 缺点:函数中的变量都会保存到内存中,内存消耗很大,所有不饿能滥用闭包
+</script>
