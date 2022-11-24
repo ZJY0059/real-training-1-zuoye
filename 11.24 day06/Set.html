@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 1.新建一个set数组
+    let set=new Set()
+    console.log(set);
+
+    // 2.添加元素 只能单独进行添加
+    set.add('梅西')
+    set.add('万岁')
+    console.log(set);
+    // 3.删除元素 根据内容来进行删除元素
+    set.delete('万岁')
+    console.log(set);
+    // 4.检测是否存在这个值
+    console.log(set.has('梅西'));
+    // 5.遍历循环
+    for(let key of set){
+        console.log(key);
+    }
+    // 6.获取长度
+    console.log(set.size);
+
+    // 去重方法
+    let array=[1,1,1,1,2,2,2,3,3,3,5,6,7]
+//    1.set方法
+    let res=new Set(array)
+    console.log(res);
+//    2.扩展运算符转换为一个数组
+    let res1=[...res]
+    console.log(res1);
+    // 3.Array.from()转换为一个数组
+   let res2=Array.from(res)
+   console.log(res2);
+  
+
+  console.log('---------------------');
+
+
+    
+//     let set=new Set()
+//     console.log(set);
+
+   
+//     set.add('梅西')
+//     set.add('万岁')
+//     console.log(set);
+  
+//     set.delete('万岁')
+//     console.log(set);
+
+//     console.log(set.has('梅西'));
+
+//     for(let key of set){
+//         console.log(key);
+//     }
+
+//     console.log(set.size);
+
+ 
+//     let array=[1,1,1,1,2,2,2,3,3,3,5,6,7]
+
+//     let res=new Set(array)
+//     console.log(res);
+
+//     let res1=[...res]
+//     console.log(res1);
+ 
+//    let res2=Array.from(res)
+//    console.log(res2);
+
+
+console.log('------------------------');
+
+
+
+
+//     let set=new Set()
+//     console.log(set);
+
+   
+//     set.add('梅西')
+//     set.add('万岁')
+//     console.log(set);
+  
+//     set.delete('万岁')
+//     console.log(set);
+
+//     console.log(set.has('梅西'));
+
+//     for(let key of set){
+//         console.log(key);
+//     }
+
+//     console.log(set.size);
+
+ 
+//     let array=[1,1,1,1,2,2,2,3,3,3,5,6,7]
+
+//     let res=new Set(array)
+//     console.log(res);
+
+//     let res1=[...res]
+//     console.log(res1);
+ 
+//    let res2=Array.from(res)
+//    console.log(res2);
+</script>
