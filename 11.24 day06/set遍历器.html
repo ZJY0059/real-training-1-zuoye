@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // Set.prototype.keys()：返回键名的遍历器。
+    // Set.prototype.values()：返回键值的遍历器。
+    // Set.prototype.entries()：返回键值对的遍历器。
+    // Set.prototype.forEach()：使用回调函数遍历每个成员。
+    // 以上都是Set自带的方法
+    let set = new Set([1, 2, 3, 4])
+    console.log(set);
+
+    for (let item of set) {
+        console.log(item);
+        //返回键值的遍历器
+    }
+    for (let item of set.keys()) {
+        console.log(item);
+        // 返回键名的遍历器
+    }
+    for (let item of set.values()) {
+        console.log(item);
+        //返回键值的遍历器
+    }
+    for (let item of set.entries()) {
+        console.log(item);
+        //返回键值的遍历器
+    }
+    set.forEach((key, value) => {
+        console.log(key + ':' + value);
+    })
+</script>
