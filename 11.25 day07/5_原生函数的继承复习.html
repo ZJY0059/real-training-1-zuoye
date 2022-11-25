@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function Phone(brand,price){
+        this.brand=brand;
+        this.price=price
+    }
+    Phone.prototype.call=function(){
+        console.log('我可以打电话');
+    }
+
+    function Smpphone(brand,price,color,size){
+        Phone.call(this,brand,price)
+         this.color=color
+         this.size=size
+}
+
+   Smpphone.prototype=new Phone
+   Smpphone.prototype.constructor=Smpphone
+   Smpphone.prototype.photo=function(){
+       console.log('我可以拍照');
+   }
+   Smpphone.prototype.play=function(){
+       console.log('我可以玩游戏');
+   }
+   let arr=new Smpphone('诺基亚',199,'粉色','5.5inch')
+   console.log(arr);
+
+
+
+
+
+
+
+console.log('------------------------------------------------------');
+
+
+
+
+
+
+
+
+   function Phone(brand,price){
+        this.brand=brand;
+        this.price=price
+    }
+    Phone.prototype.call=function(){
+        console.log('我可以打电话');
+    }
+
+    function Smpphone(brand,price,color,size){
+        Phone.call(this,brand,price)
+         this.color=color
+         this.size=size
+}
+
+   Smpphone.prototype=new Phone
+   Smpphone.prototype.constructor=Smpphone
+   Smpphone.prototype.photo=function(){
+       console.log('我可以拍照');
+   }
+   Smpphone.prototype.play=function(){
+       console.log('我可以玩游戏');
+   }
+   let arr=new Smpphone('诺基亚',199,'粉色','5.5inch')
+   console.log(arr);
+
+
+
+
+
+
+
+
+  console.log('-----------------------------------------');
+
+
+
+
+
+   function Phone(brand,price){
+        this.brand=brand;
+        this.price=price
+    }
+    Phone.prototype.call=function(){
+        console.log('我可以打电话');
+    }
+
+    function Smpphone(brand,price,color,size){
+        Phone.call(this,brand,price)
+         this.color=color
+         this.size=size
+}
+
+   Smpphone.prototype=new Phone
+   Smpphone.prototype.constructor=Smpphone
+   Smpphone.prototype.photo=function(){
+       console.log('我可以拍照');
+   }
+   Smpphone.prototype.play=function(){
+       console.log('我可以玩游戏');
+   }
+   let arr=new Smpphone('诺基亚',199,'粉色','5.5inch')
+   console.log(arr);
+</script>
