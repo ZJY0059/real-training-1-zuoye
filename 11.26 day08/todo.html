@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-style: italic;
+        }
+
+        /* 全局 */
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(90deg, #ffb0bb, #ffc2a2);
+            position: relative;
+        }
+
+        /* 整体 */
+
+        .wrap {
+            width: 460px;
+            /* height: 400px; */
+            background-color: #f2f2f2;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+
+        }
+
+        /* 外部白色盒子 */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        /* 头部 */
+        .imgs {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* 图片 */
+
+        .todolist {
+            width: 120px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            background-color: #fe7345;
+            transform: rotate(3deg);
+            font-size: 21px;
+            color: #fff;
+            border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
+            /* 前的四个数值表示圆角的水平半径，后面四个值表示圆角的垂直半径 */
+            margin-left: 20px;
+        }
+
+        /* todolist字的样式 */
+        .top-to {
+            font-size: 12px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        /* ~ Today I need to字的内容 */
+
+        .todo-inputs {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .inputs {
+            width: 260px;
+            height: 30px;
+            border: none;
+            border-bottom: 3px dashed #fd7548;
+            background-color: #f2f2f2;
+            outline: none;
+        }
+
+        /* input框样式 */
+        .buttons {
+            transform: rotate(3deg);
+            border-radius: 15% 15% 15% 15%;
+            width: 70px;
+            height: 35px;
+            margin-left: 10px;
+            background-color: #fff;
+            box-shadow: 0px 4px 0px #fe7345;
+        }
+
+        /* <!-- 输入框 和 按钮 --> */
+        .todo-nos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            font-size: 13px;
+            color: rgba(73, 74, 75, .45);
+            margin-bottom: 30px;
+        }
+
+        /* 下方内容文字 */
+
+        .boxs {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 100px 0px 50px;
+            margin-bottom: 10px;
+        }
+
+        /* 添加的内容样式 */
+
+
+        .bottoms {
+
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .bottom-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px 0px 50px;
+        }
+
+        .bottom-rigth {
+            width: 30px;
+            height: 25px;
+            background-color: #fe7345;
+            color: #fff;
+            line-height: 25px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* 底部内容 */
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <div>
+                <img src="https://www.todolist.cn/img/note.75134fb0.svg" alt="" class="imgs">
+                <!-- 插入图片 -->
+            </div>
+            <div class="todolist">
+                To-Do List
+            </div>
+        </header>
+        <!-- 头部图片和todolist文字 -->
+        <div class="top-to">
+            <h2>~ Today I need to ~</h2>
+        </div>
+        <!-- ~ Today I need to ~ -->
+        <div class="todo-inputs">
+            <input type="text" placeholder="Add new todo..." class="inputs">
+            <button class="buttons">Submit</button>
+        </div>
+        <!-- 输入框 和 按钮 -->
+        <div class="todo-nos">
+            Congrat, you have no more tasks to do
+        </div>
+        <!-- 下方内容文字 -->
+        <div class="box">
+            <!-- <div>
+                <input type="checkbox">
+                <span class="texts">123</span>
+            </div>
+            <div>×</div>
+        </div> -->
+        </div>
+        <!-- 内容展示 -->
+
+        <div class="bottoms">
+            <div class="bottom-title">
+                <div>item left</div>
+                <div class="bottom-rigth">All</div>
+            </div>
+
+        </div>
+</body>
+
+</html>
+<script>
+    function fn() {
+        let inputs = document.querySelector('.inputs')
+        // 获取input的元素
+        let values = inputs.value
+        // 拿到输入框的内容
+        if (values == '') {
+            alert('内容不能为空')
+            return false
+        }
+        // 判断input为空时提示请输入内容
+
+
+        let box = document.createElement('div')
+        //  创建div标签节点
+        box.innerHTML = `  
+           <div class='boxs'>
+        <div>
+                <input type="checkbox">
+                <span class="texts">${values}</span>
+            </div>
+            <div class='delss'>×</div>
+            </div>`
+        // 用innerHTML向对象插入内容
+        let box1 = document.querySelector('.box')
+        // console.log(box1);
+        // 获取父节点box元素
+        box1.appendChild(box)
+        // 向box1父节点的子节点列表的末尾添加新的子节点
+        inputs.value = ''
+        // 添加完把输入框清空
+
+
+        let nos = document.querySelector('.todo-nos')
+        //  获取下方内容文字的元素
+        nos.style.display = 'none'
+        //   当点至按钮时让内容隐藏
+
+
+        let bottoms = document.querySelector('.bottoms')
+        //  获取底部内容的元素
+        bottoms.style.display = 'block'
+        //   当点至按钮时让内容显示
+
+
+
+        del()   //调用删除的函数
+    }
+    //    把添加删除写在函数里面
+
+
+
+
+
+
+
+    let add = document.querySelector('.buttons')
+    // console.log(add);
+    // 获取按钮的元素
+    let inputs = document.querySelector('.inputs')
+    // 获取input的元素
+    inputs.onkeyup = function (e) {
+        if (e.keyCode == 13) {
+            fn()
+        }
+    }
+    //   回车的事件
+
+
+
+
+
+
+
+    add.onclick = function () {
+        fn()
+    }
+    //    点击按钮触发事件
+
+
+
+
+
+
+
+
+
+    function del() {
+        let dels = document.querySelectorAll('.delss')
+        // console.log(dels);
+
+        // 获取删除得元素
+        for (var i = 0; i < dels.length; i++) {
+            // for循环拿到dels
+            dels[i].onclick = function () {
+                // 给当前得删除做一个事件
+                // console.log(this);
+                // this就是拿到当前得元素
+                this.parentNode.remove();
+                // 给当前得父元素删除掉
+            }
+
+        }
+    }
+    // 定义一个函数作为删除使用
+
+
+
+
+
+
+
+
+
+</script>
