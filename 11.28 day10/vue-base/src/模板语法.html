@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id='app'>
+        <h1>插值语法</h1>
+        <h3>你好,{{name}}</h3>
+        <!-- 模板语法又叫插值语法 -->
+        <hr>
+        <h1>指令语法</h1>
+        <a v-bind:href="school.url.toUpperCase()">点我去{{school.name}}学习</a>
+        <a :href="school.url">点我去{{school.name}}学习2</a>
+    </div>
+</body>
+</html>
+<script>
+new Vue({
+    el:"#app",
+    data() {
+        return {
+            name:'张三',
+            school:{
+                name:'我要高薪就业',
+                url:'http://www.atguigu.com'
+            }
+        }
+    },
+})
+</script>

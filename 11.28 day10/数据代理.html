@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let obj={y:200}
+    let obj1={x:100}
+    Object.defineProperty(obj1,'y',{
+        get:function(){
+            console.log('我被读取了');
+            return obj.y
+        },
+        set(value){
+            obj.y=value
+            console.log('我被设置了');
+        }
+    })
+    console.log(obj);
+
+    console.log(obj1);
+</script>

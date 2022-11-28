@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id='app'>
+        单向数据绑定：<input type="text" v-bind:value="hope"><br>
+        双向数据绑定：<input type="text" v-model="job"><br>
+        {{job}}
+    </div>
+</body>
+</html>
+<script>
+new Vue({
+    el:"#app",
+    data() {
+        return {
+          hope:'前端开发',
+          job:'全栈工程师'
+        }
+    },
+})
+</script>

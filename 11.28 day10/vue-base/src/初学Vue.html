@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初学Vue</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        {{name}}
+    </div>
+</body>
+
+</html>
+<script>
+    // new Vue({
+    //     el: '#app',            //el用来指定当前Vue实例为那个容器服务,值通常为css选择器字符串
+    //     data() {               //data中用于存储数据,数据供el所指定的容器去使用,值我们
+    //         return {
+    //             name: '第一种挂载'
+    //         }
+    //     },
+    // })
+    // 第一种直接用el挂载
+    Vue.config.productionTip = false      //阻止vue在启动时生成生产提示
+    const vm = new Vue({
+        data() {
+            return {
+                name: '第二种挂载'
+            }
+        },
+    })
+    vm.$mount('#app')
+    // 第二种使用mount进行挂载
+    console.log(vm);
+
+
+</script>

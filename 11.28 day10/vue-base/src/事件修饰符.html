@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .box {
+            width: 500px;
+            height: 600px;
+            background: #000;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 300px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <a href="http://www.baidu.com" @click.prevent="add">百度</a>
+        <div class="box" @click="show">
+            <div class="box1" @click.stop="show"></div>
+        </div>
+        <button @click.once="adds">事件只触发一次</button>
+
+        <input type="text" @keydown='change'>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            add(event) {
+                // event.preventDefault();  //js默认的阻止默认事件触发
+                alert('点击百度提示')
+            },
+            // 阻止默认事件
+
+            show(event) {
+                //  event.stopPropagation();//js默认的阻止冒泡事件触发
+
+                alert('触发冒泡事件')
+            },
+            // 阻止事件冒泡
+            adds() {
+                alert('触发一次')
+            },
+            // 事件只触发一次
+
+            change(e) {
+                // console.log(e);
+                if (e.keyCode == 13) {
+                    alert('按下的是回车事件')
+                }
+            },
+            // 键盘事件
+        },
+    })
+</script>
