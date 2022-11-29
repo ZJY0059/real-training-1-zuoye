@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+         
+    
+    
+    
+    
+    <!-- 计算属性的特点 
+        1.定义：要用的属性不存在,要通过已有属性计算得来
+         2.原理：底层借助Objcet.defineproperty方法提供了getter和setter 
+         3.computed具有缓存性
+         4.computed是同步的,不能进行异步操作
+         5.数据和属性来源于data数据中,具有多对一的关系
+         6.get函数声什么时候执行？
+                (1).初次读取时会执行一次
+                (2).当依赖得数据发生改变时会被再次调用
+        7.优势：与methods实现相比,内部有缓存机制(复用),效率更高,调试方便
+        8.备注
+                1.计算属性最终会出现在vm上,直接读取使用即可
+                2.如果计算属性要被修改,那必须写set函数去响应修改,且set中要引起计算时依赖得数据发生改变 -->
+
+
+    <div id="app">
+        <div>姓：<input type="text" v-model="listname"></div>
+        <div>名：<input type="text" v-model="rigthname"></div>
+        <div>全名：<input type="text" v-model="fullname"></div>
+        <div>{{fullname}}</div>
+        <!-- <div>{{fullname}}</div>
+        <div>{{fullname}}</div>
+        <div>{{fullname}}</div> -->
+        <!-- 她具有缓存性，只会读取一次 -->
+
+
+
+
+        <!-- <div>姓：<input type="text" v-model="listname"></div>
+        <div>名：<input type="text" v-model="rigthname"></div>
+        <div>全名：<input type="text" v-model="fullname"></div>
+        <div>{{fullname}}</div> -->
+
+
+
+
+        <!-- <div>姓：<input type="text" v-model="listname"></div>
+        <div>名：<input type="text" v-model="rigthname"></div>
+        <div>全名：<input type="text" v-model="fullname"></div>
+        <div>{{fullname}}</div> -->
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                listname: '张',
+                rigthname: '富贵'
+            }
+        },
+
+
+        computed: {
+            // fullname() {
+            //     return this.listname + '-' + this.rigthname
+            // },
+            // 第一种是计算属性的简写
+
+
+
+            fullname: {
+                get: function () {
+                    console.log('我被读取了');
+
+                    return this.listname + '-' + this.rigthname
+                },
+                set: function (val) {
+                    // console.log(val);
+                    console.log('我被设置了');
+                    let arr = val.split('-')
+                    // 使用字符串切割的方法,讲字符串分开,并进行赋值
+                    // console.log(arr);
+                    this.listname = arr[0]
+                    this.rigthname = arr[1]
+                }
+            }
+            // 第二种写法    有两个函数  get要有返回值  set进行接收一个数据并进行操作
+
+
+
+
+            // fullname: {
+            //     get: function () {
+            //         console.log('我被读取了');
+
+            //         return this.listname + '-' + this.rigthname
+            //     },
+            //     set: function (val) {
+            //         // console.log(val);
+            //         console.log('我被设置了');
+            //         let arr = val.split('-')
+            //         // 使用字符串切割的方法,讲字符串分开,并进行赋值
+            //         // console.log(arr);
+            //         this.listname = arr[0]
+            //         this.rigthname = arr[1]
+            //     }
+            // }
+
+
+
+
+            // fullname: {
+            //     get: function () {
+            //         console.log('我被读取了');
+
+            //         return this.listname + '-' + this.rigthname
+            //     },
+            //     set: function (val) {
+            //         // console.log(val);
+            //         console.log('我被设置了');
+            //         let arr = val.split('-')
+            //         // 使用字符串切割的方法,讲字符串分开,并进行赋值
+            //         // console.log(arr);
+            //         this.listname = arr[0]
+            //         this.rigthname = arr[1]
+            //     }
+            // }
+        }
+    })
+</script>

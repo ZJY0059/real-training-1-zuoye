@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div>姓：<input type="text" v-model="listname"></div>
+        <div>名：<input type="text" v-model="rigthname"></div>
+        <div>全名:{{listname+'-'+rigthname}}</div> -->
+        <!-- 插值语法不能修改，只能展示 -->
+
+             <!-- <div>姓：<input type="text" v-model="listname"></div>
+        <div>名：<input type="text" v-model="rigthname"></div>
+        <div>全名:{{listname+'-'+rigthname}}</div> -->
+
+
+
+             <div>姓：<input type="text" v-model="listname"></div>
+        <div>名：<input type="text" v-model="rigthname"></div>
+        <div>全名:{{listname+'-'+rigthname}}</div>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                listname: '张',
+                rigthname: '富贵'
+            }
+        },
+    })
+</script>

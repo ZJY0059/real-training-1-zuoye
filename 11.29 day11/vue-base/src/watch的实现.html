@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>姓：<input type="text" v-model="listname"></div>
+        <div>名：<input type="text" v-model="rigthname"></div>
+        <div>全名：<input type="text" v-model="fullname"></div>
+        <div>{{fullname}}</div>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                listname: '张',
+                rigthname: '富贵',
+                fullname: ''
+            }
+        },
+
+        //    watch:
+        //           1.定义：监听的属性必须要在data中存在或定义
+        //           2.原理：底层借助Objcet.defineproperty方法提供了getter和setter 
+        //           3.特点
+        //                 1.当被监视的属性变化时,回调函数自动调用,进行相关操作
+        //                 2.监视的属性必须存在,才能进行监听
+        //                 3.watch是异步的
+        //                 4.可以配置两个属性 immdiate(一进页面立即监听),deep(深度监听)属性
+
+        watch: {
+            // listname(newvalue, oldvalue) {
+            //     // console.log(newvalue);
+            //     // console.log(oldvalue);
+            //     this.fullname = newvalue + '-' + this.rigthname
+            // },
+            // rigthname(newvalue, oldvalue) {
+            //     // console.log(newvalue);
+            //     // console.log(oldvalue);
+            //     this.fullname = this.rigthname + '-' + newvalue
+            // },
+            // // fullname(newvalue, oldvalue) {
+            // //     console.log(newvalue);
+            // //     console.log(oldvalue);
+            // //     let arr = newvalue.split('-')
+            // //     this.listname = arr[0]
+            // //     this.rigthname = arr[1]
+            // // },
+            // // 简写形式
+            // fullname: {
+            //     immediate: true,
+            //     // 一进页面立即监听
+            //     handler(newValue, oldValue) {
+            //         if (!newValue && !oldValue) {
+            //             this.fullname = this.listname + '-' + this.rigthname
+            //         } else {
+            //             let arr = newValue.split('-')
+            //             this.listname = arr[0]
+            //             this.rigthname = arr[1]
+            //             this.fullname = this.listname + '-' + this.rigthname
+            //         }
+            //     }
+            // }
+
+
+
+
+
+
+            // listname(newvalue, oldvalue) {
+            //     // console.log(newvalue);
+            //     // console.log(oldvalue);
+            //     this.fullname = newvalue + '-' + this.rigthname
+            // },
+            // rigthname(newvalue, oldvalue) {
+            //     // console.log(newvalue);
+            //     // console.log(oldvalue);
+            //     this.fullname = this.rigthname + '-' + newvalue
+            // },
+            // // fullname(newvalue, oldvalue) {
+            // //     console.log(newvalue);
+            // //     console.log(oldvalue);
+            // //     let arr = newvalue.split('-')
+            // //     this.listname = arr[0]
+            // //     this.rigthname = arr[1]
+            // // },
+            // // 简写形式
+            // fullname: {
+            //     immediate: true,
+            //     // 一进页面立即监听
+            //     handler(newValue, oldValue) {
+            //         if (!newValue && !oldValue) {
+            //             this.fullname = this.listname + '-' + this.rigthname
+            //         } else {
+            //             let arr = newValue.split('-')
+            //             this.listname = arr[0]
+            //             this.rigthname = arr[1]
+            //             this.fullname = this.listname + '-' + this.rigthname
+            //         }
+            //     }
+            // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            listname(newvalue, oldvalue) {
+                // console.log(newvalue);
+                // console.log(oldvalue);
+                this.fullname = newvalue + '-' + this.rigthname
+            },
+            rigthname(newvalue, oldvalue) {
+                // console.log(newvalue);
+                // console.log(oldvalue);
+                this.fullname = this.rigthname + '-' + newvalue
+            },
+            // fullname(newvalue, oldvalue) {
+            //     console.log(newvalue);
+            //     console.log(oldvalue);
+            //     let arr = newvalue.split('-')
+            //     this.listname = arr[0]
+            //     this.rigthname = arr[1]
+            // },
+            // 简写形式
+            fullname: {
+                immediate: true,
+                // 一进页面立即监听
+                handler(newValue, oldValue) {
+                    if (!newValue && !oldValue) {
+                        this.fullname = this.listname + '-' + this.rigthname
+                    } else {
+                        let arr = newValue.split('-')
+                        this.listname = arr[0]
+                        this.rigthname = arr[1]
+                        this.fullname = this.listname + '-' + this.rigthname
+                    }
+                }
+            }
+        }
+    })
+</script>
