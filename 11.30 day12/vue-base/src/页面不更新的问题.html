@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>人员列表</h2>
+        <button @click="update">更新添加的数据</button>
+        <ul>
+            <li v-for="item in list" :key='item.id'>
+                {{item.name}}-{{item.age}}-{{item.sex}}
+            </li>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                list: [
+                    { id: 1, name: '张三', age: 19, sex: '女' },
+                    { id: 2, name: '李四', age: 20, sex: '女' },
+                    { id: 3, name: '王五', age: 21, sex: '男' },
+                    { id: 4, name: '赵六', age: 22, sex: '男' }
+                ],
+            }
+        },
+        methods: {
+            update() {
+                // this.list[0].name = '马老师',
+                //     this.list[0].age = '30',
+                //     this.list[0].sex = '不男不女'
+
+                // this.list[0] = { name: '马老师', age: '80', sex: '不男不女' }
+                // 这样写视图不会更新，这时候我们就需要用到vue.$set来实现视图实时更新
+
+                // this.list.splice(0, 1, { name: '马老师', age: '80', sex: '不男不女' })
+
+
+
+                // Vue.set(this.list, 0, { name: '马老师', age: '80', sex: '不男不女' })
+                this.$set(this.list, 0, { name: '马老师', age: '80', sex: '不男不女' })
+                // this.$set 有三个参数
+                //  第一个参数是:给添加
+                //  第二个参数是:添加的字段      (头部添加下标为0)
+                // 第三个参数是：添加的内容
+            }
+        },
+    })
+</script>

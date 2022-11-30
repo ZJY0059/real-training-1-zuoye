@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+      <!-- 需求分析
+             1.先实现页面的布局
+                   1)建一个input
+                   2)创建ul li 
+             2.建数据
+             3.实现列表的渲染
+                 通过v-for实现列表的展示效果
+             4.搜索:实现模糊查询的效果
+             5.边界情况：输入空或者没有内容时,展示所有的内容 -->
+
+    <div id="app">
+        <h1>人员列表</h1>
+        <input type="text" v-model="searchName" placeholder="请输入关键字" @input='search'>
+        <ul>
+            <li v-for="item in searchlist" :key='item.id'>
+                {{item.name}}-{{item.age}}-{{item.sex}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                searchName: '',
+                list: [
+                    { id: 1, name: '张三', age: 19, sex: '女' },
+                    { id: 2, name: '李四', age: 20, sex: '女' },
+                    { id: 3, name: '王五', age: 21, sex: '男' },
+                    { id: 4, name: '赵六', age: 22, sex: '男' }
+                ],
+                searchlist: [],   //保存一个备份数组,要不就越搜越少
+            }
+        },
+        methods: {
+            search() {
+                this.searchlist = this.list.filter(item => {
+                    return item.name.includes(this.searchName)
+                })
+            }
+
+        },
+       created() {
+           this.search()
+       },
+    //    created一进页面就调用这个方法
+    })
+</script>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>人员列表</h1>
+        <input type="text" placeholder="查找" v-model="searchname">
+        <button @click='sortlow'>年龄升序</button>
+        <button @click='sortlitre'>年龄降序</button>
+        <button @click='sortoriginal'>原顺序</button>
+        <ul>
+            <li v-for="item in searchlists" ::key="item.id">
+                {{item.name}}-{{item.age}}-{{item.sex}}
+            </li>
+        </ul>
+        <button @click="sort">年龄排序</button>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                list: [
+                    { id: 1, name: '梅一', age: 30, sex: '男' },
+                    { id: 2, name: '李二', age: 18, sex: '男' },
+                    { id: 3, name: '张三', age: 60, sex: '男' },
+                    { id: 4, name: '李四', age: 40, sex: '男' },
+                    { id: 5, name: '王五', age: 50, sex: '男' },
+                    { id: 6, name: '老六', age: 12, sex: '男' },
+                ],
+                searchname: '',
+                searchlist: [],   //备份数据,避免越搜越少
+                flag: false
+            }
+        },
+        methods: {
+            sortlitre() {
+                this.list.sort((a, b) => {
+                    return b.age - a.age
+                })
+            },
+            // 升序
+            sortlow() {
+                this.list.sort((a, b) => {
+                    return a.age - b.age
+                })
+            },
+            // 降序
+            sortoriginal() {
+                this.list = [
+                    { id: 1, name: '梅一', age: 30, sex: '男' },
+                    { id: 2, name: '李二', age: 18, sex: '男' },
+                    { id: 3, name: '张三', age: 60, sex: '男' },
+                    { id: 4, name: '李四', age: 40, sex: '男' },
+                    { id: 5, name: '王五', age: 50, sex: '男' },
+                    { id: 6, name: '老六', age: 12, sex: '男' },
+                ]
+            },
+            // 点击变回原始位置
+            sort() {
+                if (this.flag == false) {
+                    this.list.sort((a, b) => {
+                        return a.age - b.age
+                    })
+                    this.flag = true
+                } else {
+                    this.list.sort((a, b) => {
+                        return b.age - a.age
+                    })
+                    this.flag = false
+
+                }
+
+
+            },
+            // 取反操作
+        },
+        computed: {
+            searchlists() {
+                return this.searchlist = this.list.filter(item => item.name.includes(this.searchname))
+            }
+        }
+    })
+</script>

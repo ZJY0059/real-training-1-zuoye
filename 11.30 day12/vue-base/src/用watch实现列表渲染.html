@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>人员列表</h1>
+        <input type="text" v-model="searchName" placeholder="请输入关键字">
+        <ul>
+            <li v-for="item in searchlist" :key='item.id'>
+                {{item.name}}-{{item.age}}-{{item.sex}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                searchName: '',
+                list: [
+                    { id: 1, name: '张三', age: 19, sex: '女' },
+                    { id: 2, name: '李四', age: 20, sex: '女' },
+                    { id: 3, name: '王五', age: 21, sex: '男' },
+                    { id: 4, name: '赵六', age: 22, sex: '男' }
+                ],
+                searchlist: [],
+                // watch需要使用data里面的定义好的内容
+            }
+        },
+        watch: {
+            // searchName(newValue,oldValue) {
+            //     // console.log(newValue);
+            //     // console.log(oldValue,);
+            //     this.searchlist = this.list.filter(item => item.name.indexOf(this.searchName) !== -1)
+            // },
+
+            searchName: {
+                immediate: true,   //一进页面就立即监听
+                handler() {
+                    this.searchlist = this.list.filter(item => item.name.indexOf(this.searchName) !== -1)
+                }
+            }
+        }
+        // 通过watch监听实现，我们是要监听输入框的内容
+
+    })
+</script>

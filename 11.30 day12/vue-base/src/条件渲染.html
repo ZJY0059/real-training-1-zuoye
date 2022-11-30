@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 v-if="flag">{{name}}</h2>
+
+
+        <h2 v-show="flags">{{name1}}</h2>
+        <button @click="flags=!flags">show判断</button>
+    </div>
+</body>
+
+</html>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                name: 'v-if判断',
+                flag: true,
+                name1: 'v-show判断',
+                flags: false
+            }
+        },
+
+    })
+</script>

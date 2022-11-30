@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1> 局部： {{time | times}}</h1>
+        <h1> 全局： {{time | timess}}</h1>
+
+
+    </div>
+</body>
+
+</html>
+<script>
+    Vue.filter('timess', function (value, str = 'YYYY年MM月DD日 HH:mm:ss') {
+        return dayjs(value).format(str)
+    })
+    // 全局过滤器
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                time: new Date().valueOf()
+            }
+        },
+        created() {
+            console.log(this.time);
+        },
+
+        filters: {
+            times(value, str = 'YYYY年MM月DD日 HH:mm:ss') {
+                return dayjs(value).format(str)
+            }
+        }
+        // 局部过滤器
+    })
+</script>
