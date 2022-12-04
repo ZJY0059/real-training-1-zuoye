@@ -1,0 +1,100 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    font-family: cursive;
+    display: flex;
+    justify-content: center;
+    background-image: url('./img/xxxx.gif'); 
+    color: #fff;
+   
+}
+/* body全局设置 */
+
+h1{
+    color: #fff;
+    text-align: center;
+    line-height: 180px;
+}
+/* 头部名字 */
+.time{
+    color: #fff;
+    text-align: right;
+    font-size: 20px;
+    margin-right: 100px;
+}
+/* 时间样式 */
+.Godchosenman{
+    color: #fff;
+    font-size: 40px;
+}
+/* 天选之人 */
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+/* 中间整体布局 */
+ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+    /* -webkit-background-clip: text; */
+}
+/* 左侧ul列表布局 */
+li{
+    font-size: 26px;
+    text-align: center;
+    width: 80px;
+    margin: 26px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+    
+}
+/* li的布局 */
+.buttons {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;  
+    margin-top: -100px; 
+}
+/* footer整体布局 */
+button {
+    white-space: nowrap;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #67c23a;
+    border-color: #67c23a;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+/* 按钮的样式 */
+
+.Godchosenmans {
+    width: 600px;
+    height: 300px;
+    line-height: 300px;
+    text-align: left;
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 200px;    
+}
+/* 右侧天选之人样式 */
+
+.right{
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+}
+/* 右侧布局 */
