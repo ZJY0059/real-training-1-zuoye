@@ -1,0 +1,224 @@
+<template>
+  <div>
+    <div class="setting-title">
+      <el-tabs v-model="activeName" class="demo-tabs">
+        <el-tab-pane label="角色管理" name="first">
+          <el-button type="primary" size="small" @click="addrole"
+            >新增角色</el-button
+          >
+          <!-- 表格 -->
+          <el-table
+            :data="$store.state.setting.tableData"
+            border
+            style="width: 97%; margin: 20px 0 20px 20px"
+          >
+            <el-table-column
+              type="index"
+              label="序号"
+              width="120"
+              align="center"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="name"
+              label="姓名"
+              width="180"
+              align="center"
+            >
+            </el-table-column>
+            <el-table-column prop="description" label="描述" align="center">
+            </el-table-column>
+            <el-table-column label="操作" align="center">
+              <template slot-scope="scope">
+                <el-button
+                  size="mini"
+                  type="success"
+                  @click="apportion(scope.row.id)"
+                  >分配权限</el-button
+                >
+                <el-button
+                  size="mini"
+                  type="primary"
+                  @click="roleedit(scope.row, scope.row.id)"
+                  >编辑</el-button
+                >
+                <el-button
+                  size="mini"
+                  type="danger"
+                  @click="roledel(scope.row.id)"
+                  >删除</el-button
+                >
+              </template>
+            </el-table-column>
+          </el-table>
+          <div style="display: flex; justify-content: space-between">
+            <p></p>
+            <!-- 分页 -->
+            <el-pagination
+              @current-change="handleCurrentChange"
+              :current-page="$store.state.setting.pagination.page"
+              :page-size="$store.state.setting.pagination.size"
+              layout="prev, pager, next"
+              :total="$store.state.setting.pagination.total"
+            >
+            </el-pagination>
+            <p></p>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="公司信息" name="second">
+          <el-alert
+            title="对公司名称、公司地址、营业执照、公司地区的更新，将使得公司资料被重新审核，请谨慎修改"
+            type="info"
+            show-icon
+            :closable="false"
+          >
+          </el-alert>
+          <el-form
+            ref="form"
+            :model="form"
+            label-width="120px"
+            style="margin: 20px 0px 0px 65px"
+          >
+            <el-form-item label="公司名称">
+              <el-input
+                v-model="$store.state.setting.form.name"
+                :disabled="true"
+                style="width: 350px"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="公司地址">
+              <el-input
+                v-model="$store.state.setting.form.companyAddress"
+                :disabled="true"
+                style="width: 350px"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="邮箱">
+              <el-input
+                v-model="$store.state.setting.form.mailbox"
+                :disabled="true"
+                style="width: 350px"
+              ></el-input>
+            </el-form-item>
+            <el-form-item label="备注">
+              <el-input
+                type="textarea"
+                v-model="$store.state.setting.form.remarks"
+                :disabled="true"
+                style="width: 350px"
+              ></el-input>
+            </el-form-item>
+          </el-form>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
+
+
+
+    <!-- 对话框组件 -->
+    <dialogs ref="setups" :title="title" :editid="editid" :assignId="assignId"></dialogs>
+  </div>
+</template>
+
+<script>
+import store from '@/store'
+import dialogs from '../setting/dialogs.vue'
+export default {
+  data() {
+    return {
+      /**tab栏切换 */
+      activeName: 'first',
+      /**表单的内容展示 */
+      form: {
+        name: '',
+        companyAddress: '',
+        mailbox: '',
+        remarks: ''
+      },
+      /**新增角色模态框 */
+      dialogVisible: false,
+      // /**模态框动态标题 */
+      title: '新增角色',
+      // /**判断拿到那个数据 */
+      editid: 0,
+      /**分配权限 */
+      dialogFormVisible2: false,
+			/**分配权限拿到id */
+      assignId: -1
+    }
+  },
+  methods: {
+    /**分页 */
+    handleCurrentChange(val) {
+      // console.log(val);
+      this.$store.dispatch('setting/setGet', val)
+    },
+    /**添加角色 */
+    addrole() {
+      this.editid = -1
+      this.title = '新增角色'
+      this.$refs.setups.info()
+    },
+    /**删除角色 */
+    roledel(id) {
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+							store.dispatch('setting/delroleDeletes',id)
+              this.$message({
+                type: 'success',
+                message: '删除成功!'
+              })
+              store.dispatch('setting/setGet')
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
+    },
+    /**编辑按钮 */
+    roleedit(row, id) {
+      this.$refs.setups.info(row)
+      this.editid = id
+      this.title = '编辑角色'
+
+    },
+    /**分配权限 */
+    apportion(id) {
+      this.assignId = id
+			this.$refs.setups.infos(id)
+    },
+
+  },
+  created() {},
+  mounted() {
+    store.dispatch('setting/setGet')
+    store.dispatch('setting/settitleGet')
+
+  },
+  components: {
+    dialogs //对话框组件
+  },
+  computed: {},
+  watch: {}
+}
+</script>
+
+<style lang='scss' scoped>
+/**全局 */
+.setting-title {
+  width: 1460px;
+  // height: 100px;
+  background: #fff;
+  border: 1px solid #ebeef5;
+  // margin: 20px;
+  .demo-tabs {
+    margin: 30px 0 50px 50px;
+  }
+}
+</style>
